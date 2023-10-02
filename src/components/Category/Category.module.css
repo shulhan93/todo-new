@@ -1,0 +1,10 @@
+.category {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.active {
+  color: var(--primary-color);
+}

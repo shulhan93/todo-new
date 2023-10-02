@@ -1,0 +1,60 @@
+.taskContent {
+  position: relative;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: rgba(60, 64, 67, 0.1) 0px 1px 3px 0px,
+      rgba(60, 64, 67, 0.1) 0px 0px 1px -4px;
+  }
+}
+
+.taskTitle {
+  padding-left: 30px;
+  position: relative;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--text-color-dark);
+}
+
+.taskDone {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+
+  &:hover {
+    .taskRadioBtn {
+      display: none;
+    }
+    .taskIconBtn {
+      display: block;
+    }
+  }
+}
+
+.taskRadioBtn {
+  width: 14px;
+  height: 14px;
+  border-radius: 100px;
+  border: 1px solid #000;
+  background-color: transparent;
+}
+
+.taskIconBtn {
+  width: 16px;
+  height: 16px;
+  display: none;
+}
+
+.taskDescription {
+  font-size: 14px;
+  padding-left: 30px;
+}

@@ -1,0 +1,49 @@
+@import "./assets/css/normalize.css";
+@import "./assets/css/reset.css";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500&display=swap");
+
+:root {
+  --text-color-dark: #000000;
+  --text-color: #595959;
+  --line-color: #e2e2e2;
+  --primary-color: #4285f4;
+  --hover-color: #f6f6f6;
+}
+
+body {
+  font-family: "Open-sans", sans-serif;
+  color: var(--text-color);
+  font-size: 18px;
+}
+
+#root {
+  height: 100vh;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid var(--line-color);
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+
+  &::placeholder {
+    font-size: 14px;
+  }
+}
+
+textarea {
+  padding: 5px;
+
+  font-size: 14px;
+  &::placeholder {
+    font-size: 14px;
+  }
+}

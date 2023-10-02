@@ -1,0 +1,21 @@
+.categories {
+  padding-top: 100px;
+  padding-left: 5vw;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--line-color);
+  padding-right: 10px;
+}
+
+.title {
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.categoriesList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,35 @@
+.iconPlus {
+  color: var(--primary-color);
+}
+
+.container {
+  position: relative;
+
+  input {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 25px;
+  }
+}
+
+.addCategory {
+  width: 90%;
+  position: relative;
+}
+
+.addCategoryBtn {
+  top: 3px;
+  right: 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+
+  span {
+    position: relative;
+    top: -1px;
+    color: var(--primary-color);
+  }
+}

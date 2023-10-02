@@ -1,0 +1,28 @@
+.form {
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+
+  textarea {
+    border: 1px solid var(--line-color);
+    border-radius: 5px;
+    resize: none;
+    width: 100%;
+    height: 60px;
+  }
+
+  &Btns {
+    display: flex;
+    justify-content: flex-end;
+    gap: 4px;
+  }
+
+  &Btn {
+    font-size: 14px;
+    border: 1px solid var(--line-color);
+    border-radius: 5px;
+    align-self: flex-end;
+  }
+}
