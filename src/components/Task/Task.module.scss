@@ -2,12 +2,10 @@
   position: relative;
   cursor: pointer;
   padding: 5px;
-  border-radius: 5px;
+  border-bottom: 1px solid transparent;
   transition: all 0.3s;
-
   &:hover {
-    box-shadow: rgba(60, 64, 67, 0.1) 0px 1px 3px 0px,
-      rgba(60, 64, 67, 0.1) 0px 0px 1px -4px;
+    border-color: var(--primary-color);
   }
 }
 

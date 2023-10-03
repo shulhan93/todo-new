@@ -15,6 +15,8 @@ export default function Tasks({
   onAddTask,
   onEditTask,
   onAddCompletedTask,
+  onReturnCompletedTask,
+  onDelTask,
 }) {
   const [text, setText] = useState();
   const [showModal, setShowModal] = useState(false);
@@ -97,7 +99,9 @@ export default function Tasks({
 
       <div className={styles.addTaskContainer}>
         <button
-          onClick={() => setShowForm(!showForm)}
+          onClick={() => {
+            setShowForm(!showForm);
+          }}
           className={styles.addTask}
         >
           <span>+</span> add task
@@ -118,6 +122,7 @@ export default function Tasks({
                   setEditableTask={setEditableTask}
                   editableTask={editableTask}
                   onEditTask={onEditTask}
+                  showForm={showForm}
                   onAddCompletedTask={onAddCompletedTask}
                 />
               ) : (
@@ -140,7 +145,17 @@ export default function Tasks({
           {showCompletedList && (
             <ul className="completedList">
               {category.tasks.map((el, i) =>
-                el.isCompleted ? <CompletedTask key={i} title={el.title} /> : ""
+                el.isCompleted ? (
+                  <CompletedTask
+                    onReturnCompletedTask={onReturnCompletedTask}
+                    onDelTask={onDelTask}
+                    key={i}
+                    title={el.title}
+                    id={el.id}
+                  />
+                ) : (
+                  ""
+                )
               )}
             </ul>
           )}

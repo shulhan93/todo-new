@@ -13,7 +13,7 @@ export default function Category({
       className={`${styles.category} ${isActive ? styles.active : ""}`}
       onClick={() => onChangeCategory(category)}
     >
-      <span>{category.title}</span>
+      {category.title}
     </li>
   );
 }

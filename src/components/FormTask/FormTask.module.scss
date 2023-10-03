@@ -2,6 +2,7 @@
   max-width: 300px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 10px;
 
   gap: 5px;
 
@@ -24,5 +25,15 @@
     border: 1px solid var(--line-color);
     border-radius: 5px;
     align-self: flex-end;
+
+    &:first-child:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+
+    &:last-child:hover {
+      background-color: var(--line-color);
+      // color: #fff;
+    }
   }
 }

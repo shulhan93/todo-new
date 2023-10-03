@@ -1,6 +1,6 @@
 import AddCategory from "../AddCategory/AddCategory";
 import Category from "../Category/Category";
-import styles from "./Categories.module.css";
+import styles from "./Categories.module.scss";
 
 const Categories = ({
   categories,

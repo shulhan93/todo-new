@@ -1,0 +1,30 @@
+.task {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: line-through;
+
+  &:hover &Del {
+    display: block;
+  }
+
+  &Btn {
+    width: 15px;
+    height: 15px;
+    border-radius: 100px;
+    cursor: pointer;
+
+    transition: all 0.2s;
+
+    .task &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &Del {
+    display: none;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+  }
+}

@@ -17,6 +17,15 @@
 
   input {
     width: 100%;
+    padding-right: 35px;
+  }
+
+  span {
+    display: block;
+    white-space: nowrap;
+    max-width: 360px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
@@ -66,7 +75,6 @@
   height: 30px;
   border: 1px solid var(--line-color);
   border-radius: 100px;
-  writing-mode: vertical-rl;
 }
 
 .btnModal {
@@ -89,6 +97,7 @@
   display: flex;
   position: relative;
   align-items: center;
+  width: 90%;
 
   input {
     font-size: 22px;

@@ -1,59 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./App.module.css";
 import Categories from "./components/Categories/Categories";
 import Tasks from "./components/Tasks/Tasks";
 
-const tasks = [
-  {
-    title: "Все",
-    id: uuidv4(),
-    tasks: [
-      {
-        id: uuidv4(),
-        title: "Купить что то 1",
-        description: "Какое то описание",
-        isCompleted: false,
-      },
-
-      {
-        id: uuidv4(),
-        title: "Купить что то 12",
-        description: "Какое то описание2",
-        isCompleted: true,
-      },
-
-      {
-        id: uuidv4(),
-        title: "Купить что то 1www2",
-        description: "Какое то описsdsdание2",
-        isCompleted: true,
-      },
-    ],
-  },
-  {
-    title: "Книги",
-    id: uuidv4(),
-    tasks: [
-      {
-        id: uuidv4(),
-        title: "Почитать что то 1",
-        description: "Какое то описание",
-        isCompleted: false,
-      },
-      {
-        id: uuidv4(),
-        title: "Почитать что то 2",
-        description: "Какое то описание",
-        isCompleted: false,
-      },
-    ],
-  },
-];
-
 function App() {
-  const [data, setData] = useState(tasks);
+  const [data, setData] = useState(
+    JSON.parse(localStorage.getItem("taskList")) || []
+  );
   const [activeCategory, setActiveCategory] = useState(data[0] || "");
+
+  useEffect(
+    function () {
+      localStorage.setItem("taskList", JSON.stringify(data));
+    },
+    [data]
+  );
 
   const handleAddCategory = (text) => {
     const newCategory = {
@@ -63,6 +25,15 @@ function App() {
     };
     setActiveCategory(newCategory);
     setData([...data, newCategory]);
+  };
+
+  const updData = (updActiveCategory) => {
+    setData(
+      data.map((item) =>
+        item.id === updActiveCategory.id ? updActiveCategory : item
+      )
+    );
+    setActiveCategory(updActiveCategory);
   };
 
   const handleEditCategory = (text) => {
@@ -79,6 +50,7 @@ function App() {
   };
 
   const handleAddTask = (title, description) => {
+    if (!title) return;
     const newTask = {
       id: uuidv4(),
       title,
@@ -96,19 +68,14 @@ function App() {
   };
 
   const handleEditTask = (task, title, description) => {
+    if (!title) return;
     const updActiveCategory = {
       ...activeCategory,
       tasks: activeCategory.tasks.map((item) =>
         item === task ? { ...item, title, description } : item
       ),
     };
-
-    setData(
-      data.map((item) =>
-        item.id === updActiveCategory.id ? updActiveCategory : item
-      )
-    );
-    setActiveCategory(updActiveCategory);
+    updData(updActiveCategory);
   };
 
   const handleAddCompletedTask = (id) => {
@@ -119,12 +86,26 @@ function App() {
       ),
     };
 
-    setData(
-      data.map((item) =>
-        item.id === updActiveCategory.id ? updActiveCategory : item
-      )
-    );
-    setActiveCategory(updActiveCategory);
+    updData(updActiveCategory);
+  };
+
+  const handleReturnCompletedTask = (id) => {
+    const updActiveCategory = {
+      ...activeCategory,
+      tasks: activeCategory.tasks.map((item) =>
+        item.id === id ? { ...item, isCompleted: false } : item
+      ),
+    };
+    updData(updActiveCategory);
+  };
+
+  const handleDelTask = (id) => {
+    const updActiveCategory = {
+      ...activeCategory,
+      tasks: activeCategory.tasks.filter((item) => item.id != id),
+    };
+
+    updData(updActiveCategory);
   };
 
   return (
@@ -144,6 +125,8 @@ function App() {
           onAddTask={handleAddTask}
           onEditTask={handleEditTask}
           onAddCompletedTask={handleAddCompletedTask}
+          onReturnCompletedTask={handleReturnCompletedTask}
+          onDelTask={handleDelTask}
         />
       )}
     </main>

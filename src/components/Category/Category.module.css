@@ -3,6 +3,9 @@
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .active {
